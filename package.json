@@ -1,0 +1,11 @@
+{
+  "name": "prisma-meetup-talk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:WonderPanda/prisma-meetup-talk.git",
+  "author": "Jesse Carter <jesse.r.carter@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-tag": "^2.10.1"
+  }
+}

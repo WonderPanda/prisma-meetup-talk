@@ -3,12 +3,15 @@ type User {
   handle: String! @unique
   emailAddress: String! @unique
   name: String!
-  servers: [Server!]!
+  servers: [Server]
+  friends: [User]
 }
 
 type Server {
   id: ID! @unique
   name: String!
+  public: Boolean! @default(value: "true")
+  members: [User!]!
   channels: [Channel!]!
 }
 
@@ -16,7 +19,9 @@ type Channel {
   id: ID! @unique
   name: String!
   server: Server!
+  public: Boolean! @default(value: "true")
   messages: [Message!]!
+  members: [User!]!
 }
 
 type Message {
