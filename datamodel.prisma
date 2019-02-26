@@ -1,0 +1,26 @@
+type User {
+  id: ID! @unique
+  handle: String! @unique
+  emailAddress: String! @unique
+  name: String!
+  servers: [Server!]!
+}
+
+type Server {
+  id: ID! @unique
+  name: String!
+  channels: [Channel!]!
+}
+
+type Channel {
+  id: ID! @unique
+  name: String!
+  server: Server!
+  messages: [Message!]!
+}
+
+type Message {
+  id: ID! @unique
+  author: User!
+  channel: Channel!
+}
