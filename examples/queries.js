@@ -9,30 +9,6 @@ const listServers = gql`
   }
 `;
 
-const addFriends = gql`
-  mutation updateUser {
-    updateUser(
-      where: { handle: "WonderPanda" }
-      data: {
-        friends: {
-          create: [
-            {
-              handle: "Pookie"
-              emailAddress: "christyn@someemail.com"
-              name: "Christyn"
-            }
-          ]
-        }
-      }
-    ) {
-      friends {
-        id
-        name
-      }
-    }
-  }
-`;
-
 const serverDetails = gql`
   query {
     servers {
@@ -42,6 +18,15 @@ const serverDetails = gql`
           handle
         }
       }
+    }
+  }
+`;
+
+const userLike = gql`
+  query userLike {
+    users(where: { handle_starts_with: "User" }) {
+      handle
+      id
     }
   }
 `;

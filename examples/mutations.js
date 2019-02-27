@@ -22,7 +22,7 @@ const createServerWithUser = gql`
   }
 `;
 
-const updateServer = gql`
+const createSomeMembers = gql`
   mutation updateServer {
     updateServer(
       data: {
@@ -42,6 +42,64 @@ const updateServer = gql`
     ) {
       members {
         handle
+      }
+    }
+  }
+`;
+
+const createSomeChannels = gql`
+  mutation {
+    updateServer(
+      where: { name: "Server Of Awesomeness" }
+      data: {
+        channels: { create: [{ name: "Channel1" }, { name: "Channel2" }] }
+      }
+    ) {
+      name
+      members {
+        handle
+      }
+      channels {
+        name
+      }
+    }
+  }
+`;
+
+const createMessage = gql`
+  mutation createMessage {
+    createMessage(
+      data: {
+        content: "Hello, World!"
+        author: { connect: { handle: "WonderPanda" } }
+        channel: { connect: { name: "Channel1" } }
+      }
+    ) {
+      id
+      content
+    }
+  }
+`;
+
+const addFriends = gql`
+  mutation updateUser {
+    updateUser(
+      where: { handle: "WonderPanda" }
+      data: {
+        friends: {
+          create: [
+            {
+              handle: "Pookie"
+              emailAddress: "christyn@someemail.com"
+              name: "Christyn"
+            }
+          ]
+        }
+      }
+    ) {
+      friends {
+        id
+        name
       }
     }
   }
