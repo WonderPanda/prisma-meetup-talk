@@ -33,6 +33,29 @@ const addFriends = gql`
   }
 `;
 
+const serverDetails = gql`
+  query {
+    servers {
+      channels {
+        name
+        members {
+          handle
+        }
+      }
+    }
+  }
+`;
+
+const aggregateExample = gql`
+  query {
+    usersConnection {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
 const whatAreMyFriendsUpTo = gql`
   query whatAreMyFriendsUpTo {
     user(where: { handle: "WonderPanda" }) {

@@ -1,15 +1,13 @@
 type User {
   id: ID! @unique
   handle: String! @unique
-  emailAddress: String! @unique
-  name: String!
   servers: [Server]
   friends: [User]
 }
 
 type Server {
   id: ID! @unique
-  name: String!
+  name: String! @unique
   public: Boolean! @default(value: "true")
   members: [User!]!
   channels: [Channel!]!
@@ -17,7 +15,7 @@ type Server {
 
 type Channel {
   id: ID! @unique
-  name: String!
+  name: String! @unique
   server: Server!
   public: Boolean! @default(value: "true")
   messages: [Message!]!
@@ -28,4 +26,5 @@ type Message {
   id: ID! @unique
   author: User!
   channel: Channel!
+  content: String!
 }
